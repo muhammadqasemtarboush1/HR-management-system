@@ -102,3 +102,9 @@ for (let i = 0; i < allEmployees.length; i++) {
   allEmployees[i].salary();
   allEmployees[i].render();
 }
+
+// Day2
+function randId() {
+  const id = Math.floor(1000 + Math.random() * 9000);
+  return id;
+}
