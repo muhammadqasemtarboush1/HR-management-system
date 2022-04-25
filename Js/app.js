@@ -1,5 +1,7 @@
 "use strict";
 let allEmployees = [];
+let btn = document.getElementById("btn");
+let form = document.getElementById("form");
 function Employee(
   Employee_id,
   Employee_fullName,
@@ -16,6 +18,10 @@ function Employee(
   allEmployees.push(this);
 }
 
+function randId() {
+  const id = Math.floor(1000 + Math.random() * 9000);
+  return id;
+}
 Employee.prototype.salary = function () {
   if (this.level === "Junior") {
     this.salary = Math.floor(Math.random() * (1000 - 500)) + 500;
@@ -30,24 +36,49 @@ Employee.prototype.salary = function () {
 };
 
 Employee.prototype.render = function () {
-  let result = document.getElementById("main");
-  let tblBody = document.createElement("tbody");
+  let result = document.getElementById("row");
+  let colome = document.createElement("div");
+  colome.classList.add("column");
+
   for (let i = 0; i < 1; i++) {
-    let row = document.createElement("tr");
+    let card = document.createElement("div");
+    card.classList.add("card");
     for (let j = 0; j < 1; j++) {
-      let cell = document.createElement("td");
-      let cell2 = document.createElement("td");
+      let avo = document.createElement("div");
+      // card.classList.add("card");
+      let title = document.createElement("h4");
+      let department = document.createElement("p");
+      let employeeLevel = document.createElement("p");
+      let employeeIMG = document.createElement("img");
+      let totalSalary = document.createElement("p");
+      let id = document.createElement("p");
 
       let cellTextFullName = document.createTextNode(this.fullName);
-      let cellTextSalary = document.createTextNode(this.salary);
-      cell.appendChild(cellTextFullName);
-      cell2.appendChild(cellTextSalary);
-      row.appendChild(cell);
-      row.appendChild(cell2);
+      let cellTextDepartment = document.createTextNode(this.department);
+      let employeeLevelText = document.createTextNode(this.level);
+      // let employeeImgURI = document.createTextNode(this.department);
+      employeeIMG.src = this.imgUrl;
+      let salary = document.createTextNode(this.salary);
+      let uID = document.createTextNode(this.id);
+
+      title.appendChild(cellTextFullName);
+      department.appendChild(cellTextDepartment);
+      employeeLevel.appendChild(employeeLevelText);
+      // employeeIMG.appendChild(employeeImgURI);
+      totalSalary.appendChild(salary);
+      id.appendChild(uID);
+
+      avo.appendChild(title);
+      avo.appendChild(department);
+      avo.appendChild(employeeLevel);
+      avo.appendChild(employeeIMG);
+      avo.appendChild(totalSalary);
+      avo.appendChild(id);
+      card.appendChild(avo);
     }
-    tblBody.appendChild(row);
+    colome.appendChild(card);
   }
-  result.appendChild(tblBody);
+  result.appendChild(colome);
 };
 const ghazi = new Employee(
   1000,
@@ -104,7 +135,18 @@ for (let i = 0; i < allEmployees.length; i++) {
 }
 
 // Day2
-function randId() {
-  const id = Math.floor(1000 + Math.random() * 9000);
-  return id;
+// btn.addEventListener();
+
+form.addEventListener("submit", handleSubmit);
+function handleSubmit(event) {
+  event.preventDefault();
+  let name = event.target.name.value;
+  let department = event.target.department.value;
+  let level = event.target.level.value;
+  let imgURI = event.target.imgURI.value;
+  let uID = randId();
+  let newEmployee = new Employee(uID, name, department, level, imgURI);
+  console.log(newEmployee, "employee");
+  newEmployee.salary();
+  newEmployee.render();
 }
