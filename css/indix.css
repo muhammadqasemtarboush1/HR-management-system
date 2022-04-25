@@ -5,6 +5,20 @@
   --pending: #58b1e2;
   --gray: #e2e2e2;
 }
+/* *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
+  font-family: var(--ff-body);
+  font-weight: var(--fw-body);
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+} */
 
 header {
   margin: 20px;
@@ -13,13 +27,15 @@ header {
 main {
   background-color: var(--gray);
   display: flex;
+  flex-wrap: wrap;
+
   text-align: center;
   justify-content: space-evenly;
-  /* align-items: center; */
+  align-items: center;
   margin: 10px;
   padding: 2px;
   border-radius: 10px;
-  height: 70vh;
+  /* height: 70vh; */
 }
 
 button {
@@ -127,6 +143,88 @@ li a {
   text-align: center;
 }
 
-/* .social-media-icon .fa-facebook {
-  font-size: 3em;
-} */
+section {
+  display: flex;
+}
+
+.rounded {
+  max-width: 6rem;
+  border-radius: 0.75rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+label,
+p {
+  padding: 8px;
+  font-weight: 300;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+#btn {
+  margin-top: 10px;
+}
+#btn:hover {
+  color: var(--hoverNav);
+  background-color: var(--white);
+  /* box-shadow: #000000; */
+}
+
+#form {
+  display: grid;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* W3school */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10 10px;
+  margin: 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {
+  margin: 10px -5px;
+  /* justify-content: sp */
+  /* padding: 10px; */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  width: max-content;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+}
