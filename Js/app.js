@@ -80,20 +80,20 @@ Employee.prototype.render = function () {
   }
   result.appendChild(colome);
 };
-const ghazi = new Employee(
-  1000,
-  "Ghazi Samer",
-  "Administration",
-  "Senior",
-  "./assets/ch_ml_1.jpg"
-);
-const lina = new Employee(
-  1001,
-  "Lana Ali",
-  "Finance",
-  "Senior",
-  "./assets/ch_fm_1.jpg"
-);
+// const ghazi = new Employee(
+//   1000,
+//   "Ghazi Samer",
+//   "Administration",
+//   "Senior",
+//   "./assets/ch_ml_1.jpg"
+// );
+// const lina = new Employee(
+//   1001,
+//   "Lana Ali",
+//   "Finance",
+//   "Senior",
+//   "./assets/ch_fm_1.jpg"
+// );
 const tamara = new Employee(
   1002,
   "Tamara Ayoub",
@@ -101,20 +101,20 @@ const tamara = new Employee(
   "Senior",
   "./assets/ch_fm_2.jpg"
 );
-const safi = new Employee(
-  1003,
-  "Safi Walid",
-  "Administration",
-  "Mid-Senior",
-  "./assets/ch_ml_2.jpg"
-);
-const omar = new Employee(
-  1004,
-  "Omar Zaid",
-  "Development",
-  "Senior",
-  "./assets/ch_ml_3.jpg"
-);
+// const safi = new Employee(
+//   1003,
+//   "Safi Walid",
+//   "Administration",
+//   "Mid-Senior",
+//   "./assets/ch_ml_2.jpg"
+// );
+// const omar = new Employee(
+//   1004,
+//   "Omar Zaid",
+//   "Development",
+//   "Senior",
+//   "./assets/ch_ml_3.jpg"
+// );
 const rana = new Employee(
   1005,
   "Rana Saleh",
@@ -129,13 +129,15 @@ const hadi = new Employee(
   "Mid-Senior",
   "./assets/ch_ml_4.jpg"
 );
-for (let i = 0; i < allEmployees.length; i++) {
-  allEmployees[i].salary();
-  allEmployees[i].render();
+function renderAll() {
+  for (let i = 0; i < allEmployees.length; i++) {
+    allEmployees[i].salary();
+    allEmployees[i].render();
+  }
 }
+renderAll();
 
 // Day2
-// btn.addEventListener();
 
 form.addEventListener("submit", handleSubmit);
 function handleSubmit(event) {
@@ -149,4 +151,33 @@ function handleSubmit(event) {
   console.log(newEmployee, "employee");
   newEmployee.salary();
   newEmployee.render();
+  saveData(allEmployees);
 }
+
+function saveData(data) {
+  let stringObj = JSON.stringify(data);
+  localStorage.setItem("Employees", stringObj);
+}
+
+function getData() {
+  let retrievedData = localStorage.getItem("Employees");
+
+  let arrayData = JSON.parse(retrievedData);
+
+  if (arrayData != null) {
+    for (let i = 0; i < arrayData.length; i++) {
+      var newEmployee = new Employee(
+        arrayData[i].id,
+        arrayData[i].fullName,
+        arrayData[i].department,
+        arrayData[i].level,
+        arrayData[i].imgURI
+      );
+    }
+
+    newEmployee.salary();
+    newEmployee.render();
+  }
+}
+
+getData();

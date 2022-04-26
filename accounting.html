@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Accounting</title>
-    <script type="text/javascript" src="./Js/app.js"></script>
     <link rel="stylesheet" href="./css/indix.css" />
     <link rel="stylesheet" href="./css/accounting.css" />
     <script
@@ -25,7 +24,18 @@
         </ul>
       </nav>
     </header>
-    <main class="container"></main>
+    <main class="container">
+      <table id="tableID">
+        <tbody id="table-content"></tbody>
+        <tr>
+          <th>Department Name</th>
+          <th>Number of Employees</th>
+          <th>Avarage Salary</th>
+          <th>Total Salary</th>
+        </tr>
+        <tfoot id="footer"></tfoot>
+      </table>
+    </main>
     <footer class="footer-container">
       <div>
         <span><img src="./assets/Logo.png" alt="Logo HR" /></span>
@@ -39,5 +49,6 @@
     <div class="copyright">
       <p>&copy; 2022 - All rights reserved for HR MNG.ltd.</p>
     </div>
+    <script type="text/javascript" src="./Js/accounting.js"></script>
   </body>
 </html>
