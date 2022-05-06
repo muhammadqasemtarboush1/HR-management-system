@@ -7,13 +7,13 @@ function Employee(
   Employee_fullName,
   Employee_department,
   Employee_level,
-  Employee_imgUrl
+  Employee_imgURI
 ) {
   (this.id = Employee_id),
     (this.fullName = Employee_fullName),
     (this.department = Employee_department),
     (this.level = Employee_level);
-  this.imgUrl = Employee_imgUrl;
+  this.imgURI = Employee_imgURI;
   this.salary;
   allEmployees.push(this);
 }
@@ -56,15 +56,15 @@ Employee.prototype.render = function () {
       let cellTextFullName = document.createTextNode(this.fullName);
       let cellTextDepartment = document.createTextNode(this.department);
       let employeeLevelText = document.createTextNode(this.level);
-      // let employeeImgURI = document.createTextNode(this.department);
-      employeeIMG.src = this.imgUrl;
+      // let employeeimgURI = document.createTextNode(this.department);
+      employeeIMG.src = this.imgURI;
       let salary = document.createTextNode(this.salary);
       let uID = document.createTextNode(this.id);
 
       title.appendChild(cellTextFullName);
       department.appendChild(cellTextDepartment);
       employeeLevel.appendChild(employeeLevelText);
-      // employeeIMG.appendChild(employeeImgURI);
+      // employeeIMG.appendChild(employeeimgURI);
       totalSalary.appendChild(salary);
       id.appendChild(uID);
 
@@ -94,13 +94,13 @@ Employee.prototype.render = function () {
 //   "Senior",
 //   "./assets/ch_fm_1.jpg"
 // );
-const tamara = new Employee(
-  1002,
-  "Tamara Ayoub",
-  "Marketing",
-  "Senior",
-  "./assets/ch_fm_2.jpg"
-);
+// const tamara = new Employee(
+//   1002,
+//   "Tamara Ayoub",
+//   "Marketing",
+//   "Senior",
+//   "./assets/ch_fm_2.jpg"
+// );
 // const safi = new Employee(
 //   1003,
 //   "Safi Walid",
@@ -115,20 +115,20 @@ const tamara = new Employee(
 //   "Senior",
 //   "./assets/ch_ml_3.jpg"
 // );
-const rana = new Employee(
-  1005,
-  "Rana Saleh",
-  "Development",
-  "Junior",
-  "./assets/ch_fm_3.jpg"
-);
-const hadi = new Employee(
-  1006,
-  "Hadi Ahmad",
-  "Finance",
-  "Mid-Senior",
-  "./assets/ch_ml_4.jpg"
-);
+// const rana = new Employee(
+//   1005,
+//   "Rana Saleh",
+//   "Development",
+//   "Junior",
+//   "./assets/ch_fm_3.jpg"
+// );
+// const hadi = new Employee(
+//   1006,
+//   "Hadi Ahmad",
+//   "Finance",
+//   "Mid-Senior",
+//   "./assets/ch_ml_4.jpg"
+// );
 function renderAll() {
   for (let i = 0; i < allEmployees.length; i++) {
     allEmployees[i].salary();
@@ -166,6 +166,7 @@ function getData() {
 
   if (arrayData != null) {
     for (let i = 0; i < arrayData.length; i++) {
+      console.log(arrayData[i], "imgURI");
       var newEmployee = new Employee(
         arrayData[i].id,
         arrayData[i].fullName,
@@ -173,10 +174,9 @@ function getData() {
         arrayData[i].level,
         arrayData[i].imgURI
       );
+      newEmployee.salary();
+      newEmployee.render();
     }
-
-    newEmployee.salary();
-    newEmployee.render();
   }
 }
 
